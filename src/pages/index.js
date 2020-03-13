@@ -4,13 +4,13 @@ import Layout from "../components/layout"
 
 const IndexPage = () => {
   return (
-    <Layout>
+      <Layout>
       <h1>Hello, Roy.</h1>
       <h2>Welcome to your awesome first website.</h2>
       <p>
         Need a developer? <Link to="/contact">Contact me.</Link>
       </p>
-    </Layout>
+      </Layout>
   )
 }
 
