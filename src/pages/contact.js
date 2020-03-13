@@ -7,7 +7,7 @@ const ContactPage = () => {
       <h1>contact</h1>
       <p>Contact details</p>
       <p>
-        <a href="https://google.com" target="_blank">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           Google!!
         </a>
       </p>
