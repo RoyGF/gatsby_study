@@ -1,8 +1,9 @@
 import React from "react"
 
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 
 import Layout from "../components/layout"
+import "katex/dist/katex.min.css"
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
@@ -10,11 +11,13 @@ const BlogPage = () => {
       allMarkdownRemark {
         edges {
           node {
+            fields {
+              slug
+            }
             frontmatter {
               title
               date
-            },
-            excerpt
+            }
           }
         }
       }
@@ -26,10 +29,13 @@ const BlogPage = () => {
       <h1>My Blog</h1>
       <ol>
         {data.allMarkdownRemark.edges.map((edge) => {
+
+          const slug = edge.node.fields.slug
+          const route = `/blog/${slug}`
           return (
             <li>
-              <h1>{edge.node.frontmatter.title}</h1>
-              <p>{edge.node.excerpt}</p>
+              <h1><Link to={route}>{edge.node.frontmatter.title}</Link></h1>
+              <p>{edge.node.frontmatter.date}</p>
             </li>
           )
         })}
